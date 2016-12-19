@@ -229,14 +229,20 @@ describe('subway', function() {
 
   it('should add ingredients', function() {
     var that = this;
-
-    expect(this.order(this.ingredient))
+    var ing1 = this.ingredient;
+    var ing2 = this.ingredients[Math.floor(Math.random() * this.ingredients.length)]
+    var onceOrder = this.order(ing1);
+    var twiceOrder = this.order(ing2);
+    expect(onceOrder)
       .toEqual(jasmine.objectContaining(
         {
           orderPerson: that.name,
-          ingredients: [that.ingredient]
         }
       ))
+    expect(twiceOrder.ingredients)
+      .toContain(ing1)
+    expect(twiceOrder.ingredients)
+      .toContain(ing2)
   })
 
   it('should not get orders mixed up', function() {
