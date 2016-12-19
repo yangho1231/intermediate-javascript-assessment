@@ -70,7 +70,6 @@ describe('context2', function() {
 
   it('should correctly assign context', function() {
     var nums = [getNum(), getNum(), getNum()]
-    console.log(nums);
     var num = getNum();
     var obj = {number: num};
 
@@ -191,6 +190,10 @@ describe('Chimichanga', function() {
     mmm.eat();
 
     expect(mmm.percentLeft).toEqual(60);
+  })
+  it('should have a method called eat on its prototype', function () {
+    var chimi = new Chimichanga();
+    expect(chimi.hasOwnProperty('eat')).toBe(false)
   })
 })
 
